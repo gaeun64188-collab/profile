@@ -2,14 +2,14 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-// EJS 템플릿 엔진 설정
+
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-// 정적 파일(이미지 등) 폴더 설정
+
 app.use(express.static('public'));
 
-// 메인 라우터
+
 app.get('/', (req, res) => {
   const profile = {
     name: '이가은',

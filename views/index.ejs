@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>개인 프로필</title>
   <style>
-    /* 전체 기본 설정: 모든 글자 검은색, 왼쪽 정렬, 동일 글자 크기(16px) */
+   
     body {
       font-family: 'Malgun Gothic', sans-serif;
       color: #000000;
@@ -15,7 +15,7 @@
       font-size: 16px;
     }
 
-    /* 큰 제목 28px 및 노란색 형광펜 효과 설정 */
+   
     h1 {
       font-size: 28px;
       color: #000000;
@@ -23,7 +23,7 @@
       font-weight: bold;
     }
 
-    /* 노란색 형광펜 효과 (글자의 아래쪽 50% 지점에 노란색 배경) */
+   
     h1 span {
       background: linear-gradient(to top, #ffed85 50%, transparent 50%);
       padding: 0 4px;
@@ -34,7 +34,7 @@
       font-size: 16px;
     }
 
-    /* 이미지 공통 스타일 (햄버거 & 커비) */
+  
     .food-img, .character-img {
       width: 200px;
       height: auto;
@@ -53,7 +53,7 @@
       font-size: 16px;
     }
 
-    /* 시간표 영역 설정 (표 너비 280px) */
+  
     .timetable-section {
       margin-top: 24px;
     }
@@ -82,6 +82,32 @@
       font-weight: bold;
       background-color: #ffffff;
     }
+
+  
+    .comment-section {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: none;
+    }
+
+    .comment-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .comment-form {
+      margin-bottom: 12px;
+    }
+
+    .comment-list {
+      margin: 8px 0 0 0;
+      padding-left: 20px;
+    }
+
+    .comment-list li {
+      margin-bottom: 4px;
+    }
   </style>
 </head>
 <body>
@@ -109,7 +135,7 @@
       <img src="/hamburger.jpg" alt="햄버거 이미지" class="food-img">
     </div>
 
-    <!-- 좋아하는 캐릭터: 커비 추가 영역 -->
+    <!-- 좋아하는 캐릭터: 커비 -->
     <div class="profile-item">
       좋아하는 캐릭터: 커비
       <img src="/kirby.png" alt="커비 이미지" class="character-img">
@@ -146,7 +172,46 @@
         </tbody>
       </table>
     </div>
+
+    <!-- 한 줄 방명록 섹션 -->
+    <div class="comment-section">
+      <div class="comment-title">한 줄 방명록</div>
+      
+      <div class="comment-form">
+        <input type="text" id="nickname" placeholder="작성자 이름" style="width: 100px; padding: 4px;">
+        <input type="text" id="commentText" placeholder="댓글을 입력하세요..." style="width: 220px; padding: 4px;">
+        <button onclick="addComment()" style="padding: 4px 8px; cursor: pointer;">등록</button>
+      </div>
+
+      <ul id="commentList" class="comment-list">
+        
+      </ul>
+    </div>
+
   </div>
+
+  <script>
+    function addComment() {
+      const nicknameInput = document.getElementById('nickname');
+      const commentInput = document.getElementById('commentText');
+      const commentList = document.getElementById('commentList');
+
+      const name = nicknameInput.value.trim();
+      const text = commentInput.value.trim();
+
+      if (name === '' || text === '') {
+        alert('이름과 댓글 내용을 모두 입력해주세요!');
+        return;
+      }
+
+      const newLi = document.createElement('li');
+      newLi.innerHTML = `<strong>${name}:</strong> ${text}`;
+      commentList.appendChild(newLi);
+
+      nicknameInput.value = '';
+      commentInput.value = '';
+    }
+  </script>
 
 </body>
 </html>
