@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>개인 프로필 소개</title>
+  <style>
+    body { font-family: 'Arial', sans-serif; margin: 40px; background-color: #f4f6f8; }
+    .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 500px; margin: auto; }
+    h1 { color: #333; margin-bottom: 5px; }
+    .dept { color: #0066cc; font-weight: bold; margin-bottom: 20px; }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 5px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1><%= name %></h1>
+    <p class="dept"><%= department %></p>
+    <hr>
+    <h3>소개</h3>
+    <p><%= introduction %></p>
+    <h3>보유 기술</h3>
+    <ul>
+      <% skills.forEach(function(skill) { %>
+        <li><%= skill %></li>
+      <% }); %>
+    </ul>
+  </div>
+</body>
+</html>
