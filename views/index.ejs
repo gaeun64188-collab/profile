@@ -2,29 +2,151 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>개인 프로필 소개</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>개인 프로필</title>
   <style>
-    body { font-family: 'Arial', sans-serif; margin: 40px; background-color: #f4f6f8; }
-    .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 500px; margin: auto; }
-    h1 { color: #333; margin-bottom: 5px; }
-    .dept { color: #0066cc; font-weight: bold; margin-bottom: 20px; }
-    ul { padding-left: 20px; }
-    li { margin-bottom: 5px; }
+    /* 전체 기본 설정: 모든 글자 검은색, 왼쪽 정렬, 동일 글자 크기(16px) */
+    body {
+      font-family: 'Malgun Gothic', sans-serif;
+      color: #000000;
+      text-align: left;
+      margin: 40px;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    /* 큰 제목 28px 및 노란색 형광펜 효과 설정 */
+    h1 {
+      font-size: 28px;
+      color: #000000;
+      margin-bottom: 24px;
+      font-weight: bold;
+    }
+
+    /* 노란색 형광펜 효과 (글자의 아래쪽 50% 지점에 노란색 배경) */
+    h1 span {
+      background: linear-gradient(to top, #ffed85 50%, transparent 50%);
+      padding: 0 4px;
+    }
+
+    .profile-item {
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    /* 이미지 공통 스타일 (햄버거 & 커비) */
+    .food-img, .character-img {
+      width: 200px;
+      height: auto;
+      margin-top: 6px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    ul {
+      margin: 4px 0 0 0;
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+
+    li {
+      font-size: 16px;
+    }
+
+    /* 시간표 영역 설정 (표 너비 280px) */
+    .timetable-section {
+      margin-top: 24px;
+    }
+
+    .timetable-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 280px;
+      margin-top: 6px;
+    }
+
+    th, td {
+      border: 1px solid #000000;
+      padding: 4px 8px;
+      text-align: left;
+      font-size: 16px;
+      color: #000000;
+    }
+
+    th {
+      font-weight: bold;
+      background-color: #ffffff;
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1><%= name %></h1>
-    <p class="dept"><%= department %></p>
-    <hr>
-    <h3>소개</h3>
-    <p><%= introduction %></p>
-    <h3>보유 기술</h3>
-    <ul>
-      <% skills.forEach(function(skill) { %>
-        <li><%= skill %></li>
-      <% }); %>
-    </ul>
+
+  <h1><span>개인 프로필</span></h1>
+
+  <div class="profile-container">
+    <div class="profile-item">
+      이름: <%= profile.name %>
+    </div>
+    <div class="profile-item">
+      나이: <%= profile.age %>세
+    </div>
+    <div class="profile-item">
+      학교: <%= profile.school %>
+    </div>
+    <div class="profile-item">
+      학과: <%= profile.department %>
+    </div>
+    <div class="profile-item">
+      거주지: <%= profile.location %>
+    </div>
+    <div class="profile-item">
+      좋아하는 음식: <%= profile.food %>
+      <img src="/hamburger.jpg" alt="햄버거 이미지" class="food-img">
+    </div>
+
+    <!-- 좋아하는 캐릭터: 커비 추가 영역 -->
+    <div class="profile-item">
+      좋아하는 캐릭터: 커비
+      <img src="/kirby.png" alt="커비 이미지" class="character-img">
+    </div>
+
+    <div class="profile-item">
+      취미:
+      <ul>
+        <% profile.hobbies.forEach(function(hobby) { %>
+          <li><%= hobby %></li>
+        <% }); %>
+      </ul>
+    </div>
+
+    <!-- 시간표 섹션 -->
+    <div class="timetable-section">
+      <div class="timetable-title">시간표</div>
+      <table>
+        <thead>
+          <tr>
+            <th>요일</th>
+            <th>교시</th>
+            <th>과목명</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% schedule.forEach(function(item) { %>
+            <tr>
+              <td><%= item.day %></td>
+              <td><%= item.time %></td>
+              <td><%= item.subject %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
   </div>
+
 </body>
 </html>
