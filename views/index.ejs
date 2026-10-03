@@ -5,17 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>개인 프로필</title>
   <style>
-   
     body {
       font-family: 'Malgun Gothic', sans-serif;
       color: #000000;
-      text-align: left;
-      margin: 40px;
+      text-align: center;
+      margin: 40px auto;
       line-height: 1.8;
       font-size: 16px;
     }
 
-   
     h1 {
       font-size: 28px;
       color: #000000;
@@ -23,10 +21,14 @@
       font-weight: bold;
     }
 
-   
     h1 span {
       background: linear-gradient(to top, #ffed85 50%, transparent 50%);
       padding: 0 4px;
+    }
+
+    .profile-container {
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     .profile-item {
@@ -34,26 +36,23 @@
       font-size: 16px;
     }
 
-  
     .food-img, .character-img {
       width: 200px;
       height: auto;
-      margin-top: 6px;
-      margin-bottom: 12px;
+      margin: 6px auto 12px auto;
       display: block;
     }
 
     ul {
       margin: 4px 0 0 0;
-      padding-left: 20px;
-      list-style-type: disc;
+      padding: 0;
+      list-style-position: inside;
     }
 
     li {
       font-size: 16px;
     }
 
-  
     .timetable-section {
       margin-top: 24px;
     }
@@ -67,13 +66,13 @@
     table {
       border-collapse: collapse;
       width: 280px;
-      margin-top: 6px;
+      margin: 6px auto 0 auto;
     }
 
     th, td {
       border: 1px solid #000000;
       padding: 4px 8px;
-      text-align: left;
+      text-align: center;
       font-size: 16px;
       color: #000000;
     }
@@ -83,7 +82,6 @@
       background-color: #ffffff;
     }
 
-  
     .comment-section {
       margin-top: 32px;
       padding-top: 16px;
@@ -102,7 +100,8 @@
 
     .comment-list {
       margin: 8px 0 0 0;
-      padding-left: 20px;
+      padding: 0;
+      list-style: none;
     }
 
     .comment-list li {
@@ -131,11 +130,19 @@
       거주지: <%= profile.location %>
     </div>
     <div class="profile-item">
+      MBTI: INFP
+    </div>
+    <div class="profile-item">
+      이번 학기 목표: 학점 4점 넘기
+    </div>
+    <div class="profile-item">
+      좋아하는 노래: <a href="https://www.youtube.com/watch?v=GKC1P0mCt4o" target="_blank">https://www.youtube.com/watch?v=GKC1P0mCt4o</a>
+    </div>
+    <div class="profile-item">
       좋아하는 음식: <%= profile.food %>
       <img src="/hamburger.jpg" alt="햄버거 이미지" class="food-img">
     </div>
 
-    <!-- 좋아하는 캐릭터: 커비 -->
     <div class="profile-item">
       좋아하는 캐릭터: 커비
       <img src="/kirby.png" alt="커비 이미지" class="character-img">
@@ -150,7 +157,6 @@
       </ul>
     </div>
 
-    <!-- 시간표 섹션 -->
     <div class="timetable-section">
       <div class="timetable-title">시간표</div>
       <table>
@@ -173,7 +179,6 @@
       </table>
     </div>
 
-    <!-- 한 줄 방명록 섹션 -->
     <div class="comment-section">
       <div class="comment-title">한 줄 방명록</div>
       
